@@ -19,7 +19,7 @@ public class PlayerStatisticsManager : MonoBehaviour {
     private Dictionary<CardStatistics, int> _avatarCardStatistics;
 
 	void Awake () {
-        InitCardStatistics();
+        //InitCardStatistics();
     }
 
     public void SetProjectileInfo(ProjectileType type, ProjectileInfo info) {
@@ -32,6 +32,9 @@ public class PlayerStatisticsManager : MonoBehaviour {
     }
 
     public ProjectileInfo GetProjectileInfo(ProjectileType type) {
+        if (_projectileStatistics == null) {
+            InitCardStatistics();
+        }
         return _projectileStatistics[type];
     }
 
@@ -46,6 +49,9 @@ public class PlayerStatisticsManager : MonoBehaviour {
     }
 
     public int GetCardStatistic(CardStatistics statistic) {
+        if (_avatarCardStatistics == null) {
+            InitCardStatistics();
+        }
         return _avatarCardStatistics[statistic];
     }
 
