@@ -1,4 +1,5 @@
 ﻿public enum ProjectileType {
     PistolBullet,
-    Grenade
+    Grenade,
+    ShotgunPellet
 }

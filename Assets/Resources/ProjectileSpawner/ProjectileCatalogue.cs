@@ -21,5 +21,6 @@ public class ProjectileCatalogue {
     static private void FillWithData() {
         _templatesDic.Add(ProjectileType.PistolBullet, Resources.Load("Projectiles/Prefabs/PistolBullet") as GameObject);
         _templatesDic.Add(ProjectileType.Grenade, Resources.Load("Projectiles/Prefabs/GrenadeBullet") as GameObject);
+        _templatesDic.Add(ProjectileType.ShotgunPellet, Resources.Load("Projectiles/Prefabs/ShotgunPellet") as GameObject);
     }
 }

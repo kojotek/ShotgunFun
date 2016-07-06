@@ -17,9 +17,16 @@ public class ProjectileInfo {
         return info;
     }
 }
+
 public class PistolBulletInfo : ProjectileInfo {
 
 }
+
+public class ShotgunBulletInfo : ProjectileInfo
+{
+
+}
+
 public class GrenadeBulletInfo : ProjectileInfo {
     public Vector2 OnHitVeclocityMultiplier = Vector2.one * 0.5f;
     public float HopUpFactor = 0.12f;
@@ -32,6 +39,8 @@ public class GrenadeBulletInfo : ProjectileInfo {
         return info;
     }
 }
+
+
 
 
 public class ProjectileInfoBuilder<T, C> 
@@ -76,9 +85,15 @@ public class ProjectileInfoBuilder<T, C>
         return _info;
     }
 }
+
 public class PistolBulletInfoBilder : ProjectileInfoBuilder<PistolBulletInfo, PistolBulletInfoBilder> {
 
 }
+
+public class ShotgunBulletInfoBilder : ProjectileInfoBuilder<ShotgunBulletInfo, ShotgunBulletInfoBilder>{
+
+}
+
 public class GrenadeBulletInfoBuilder : ProjectileInfoBuilder<GrenadeBulletInfo, GrenadeBulletInfoBuilder> {
     public GrenadeBulletInfoBuilder SetOnHitVeclocityMultiplier(Vector2 m) {
         _info.OnHitVeclocityMultiplier = m;

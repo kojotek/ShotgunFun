@@ -39,6 +39,7 @@ public class AvatarLogic : MonoBehaviour {
             ));
         }
     }
+
     public void OnDirectionalInputChangeSignal(Vector2 _direction) {
 
         Vector2 aimVector = Vector2.zero;

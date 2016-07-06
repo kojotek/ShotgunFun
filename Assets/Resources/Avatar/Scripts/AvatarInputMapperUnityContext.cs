@@ -40,8 +40,7 @@ public class AvatarInputMapperUnityContext : MonoBehaviour {
         _currentDirectionalKeysState.x = (Input.GetKey(LeftKey) ? -1.0f : 0.0f) + (Input.GetKey(RightKey) ? 1.0f : 0.0f);
         _currentDirectionalKeysState.y = (Input.GetKey(DownKey) ? -1.0f : 0.0f) + (Input.GetKey(UpKey) ? 1.0f : 0.0f);
 
-        if (_currentDirectionalKeysState  != _lastDirectionalKeysState)
-        {
+        if (_currentDirectionalKeysState  != _lastDirectionalKeysState){
             _avatarController.DirectionalInputChangeSignal(_currentDirectionalKeysState);
         }
 

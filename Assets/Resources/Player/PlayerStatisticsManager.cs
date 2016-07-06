@@ -10,7 +10,9 @@ public enum CardStatistics {
     ExplosionRange,
     ExplosionForce,
     ProjectileSpeed,
-    BallisticProjectileSpeed
+    BallisticProjectileSpeed,
+    ShotgunPellets,
+    ShotgunSpread
 }
 
 public class PlayerStatisticsManager : MonoBehaviour {
@@ -83,14 +85,27 @@ public class PlayerStatisticsManager : MonoBehaviour {
                 //.SetDamage(10) Tego nie uzywamy, to zalatwia ExplosionInfo
                 .SetExplosionInfo(new ExplosionInfo(
                     (float)_avatarCardStatistics[CardStatistics.ExplosionRange] * 1.0f,
-                    //ExplosionPropagationMethod.Square,
-                    ExplosionPropagationMethod.Constant,
+                    ExplosionPropagationMethod.Square,
+                    //ExplosionPropagationMethod.Constant,
                     (float)_avatarCardStatistics[CardStatistics.ExplosionForce] * 1.0f,
                     (float)_avatarCardStatistics[CardStatistics.Damage] * 1.5f,
                     InGameTag.FriendlyExplosion
                     ))
                 .Create();
             SetProjectileInfo(ProjectileType.Grenade, grenadeInfo);
+        }
+        #endregion
+        #region shotgun
+        {
+            ShotgunBulletInfoBilder shotgunBuilder = new ShotgunBulletInfoBilder();
+            ShotgunBulletInfo shotgunInfo = shotgunBuilder
+                .MakeNew()
+                .SetType(ProjectileType.ShotgunPellet)
+                .SetInitialSpeed((float)_avatarCardStatistics[CardStatistics.ProjectileSpeed] * 1.4f)
+                .SetCollisionLayer("Friendly Projectile")
+                .SetDamage(Mathf.FloorToInt((float)_avatarCardStatistics[CardStatistics.Damage] / 4.0f))
+                .Create();
+            SetProjectileInfo(ProjectileType.ShotgunPellet, shotgunInfo);
         }
         #endregion
     }
@@ -105,7 +120,8 @@ public class PlayerStatisticsManager : MonoBehaviour {
         SetCardStatistic(CardStatistics.ExplosionForce, 50);
         SetCardStatistic(CardStatistics.ProjectileSpeed, 90);
         SetCardStatistic(CardStatistics.BallisticProjectileSpeed, 50);
-
+        SetCardStatistic(CardStatistics.ShotgunPellets, 6);
+        SetCardStatistic(CardStatistics.ShotgunSpread, 10);
         /*After all statistics*/
         ReinitProjectileStatistics();
     }
