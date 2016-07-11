@@ -12,7 +12,7 @@ public class AvatarInputMapperUnityContext : MonoBehaviour {
     public KeyCode DownKey = KeyCode.S;
     private Dictionary<ProjectileType, KeyCode> ShotKeys = new Dictionary<ProjectileType, KeyCode>();
 
-    private Vector2 _lastDirectionalKeysState = Vector2.zero;
+    private Vector2 _lastDirectionalKeysState = Vector2.up;
     private Vector2 _currentDirectionalKeysState = Vector2.zero;
 
     private KeyCode[] _KeyCodesInitializationHelper = 

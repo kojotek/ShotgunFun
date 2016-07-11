@@ -46,7 +46,7 @@ public class AvatarLogic : MonoBehaviour {
         aimVector.y = _direction.y;
 
         if (_direction.y == 0.0f && _direction.x == 0.0f) {
-            aimVector.x = _controller.GetAvatarAimingDirection();
+            aimVector.x = _controller.GetAvatarFaceDirection();
         }
         if (_direction.y != 0.0f && _direction.x == 0.0f) {
             aimVector.x = 0.0f;
@@ -62,7 +62,8 @@ public class AvatarLogic : MonoBehaviour {
             aimVector.x = 0.0f;
         }
 
-        _controller.AimInDirection(aimVector);
+        var angle = MathfExt.AnlgeFromVector2(aimVector);
+        _controller.AimInDirection(angle);
     }
 
     private IEnumerator WaitForGroundCoroutine(float delayTime, Action groundDependentAction) {
@@ -81,7 +82,7 @@ public class AvatarLogic : MonoBehaviour {
 
     public void OnShotSignal(ProjectileType projectileType) {
         if (_cooldownTimes[projectileType] == 0.0f) {
-            _controller.Shot( _statisticsManager.GetProjectileInfo(projectileType) );
+            _controller.Shot( _statisticsManager.GetProjectileInfo(projectileType), _controller.GetWeaponRotation() );
         }
     }
 

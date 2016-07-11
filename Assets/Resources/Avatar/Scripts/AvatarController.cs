@@ -80,16 +80,20 @@ public class AvatarController : MonoBehaviour {
         _logic.OnShotSignal(projectileType);
     }
 
-    public void Shot(ProjectileInfo info) {
-        _projectileSpawner.Spawn(info);
+    public void Shot(ProjectileInfo info, float direction) {
+        _projectileSpawner.Spawn(info, direction);
     }
 
-    public void AimInDirection(Vector2 _direction) {
+    public void AimInDirection(float _direction) {
         _aimingController.AimInDirection(_direction);
     }
 
-    public float GetAvatarAimingDirection() {
-        return _aimingController.AvatarAimingDirection;
+    public float GetAvatarFaceDirection() {
+        return _aimingController.AvatarFaceDirection;
+    }
+
+    public float GetWeaponRotation(){
+        return _aimingController.WeaponRotation;
     }
     #endregion
 }
